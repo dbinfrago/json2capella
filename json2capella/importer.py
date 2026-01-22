@@ -19,7 +19,6 @@ _AnyJSONType = (
     | datatypes.Struct
     | datatypes.StructAttrs
 )
-T = t.TypeVar("T", bound=_AnyJSONType)
 
 
 def load_json(json_path: pathlib.Path) -> datatypes.Package:
@@ -51,7 +50,9 @@ def load_json(json_path: pathlib.Path) -> datatypes.Package:
     raise AssertionError(f"Unhandled data type in JSON: {type(data)!r}")
 
 
-def get_old_by_id(old_jsons: list[T], int_id: int | None) -> T | None:
+def get_old_by_id[T: _AnyJSONType](
+    old_jsons: list[T], int_id: int | None
+) -> T | None:
     """Get an element from the old JSON data by its intId."""
     if int_id is None:
         return None
@@ -61,7 +62,7 @@ def get_old_by_id(old_jsons: list[T], int_id: int | None) -> T | None:
     )
 
 
-def get_name(element: T, old_element: T | None) -> str:
+def get_name[T: _AnyJSONType](element: T, old_element: T | None) -> str:
     """Get the name of an element."""
     if old_element:
         return old_element.name

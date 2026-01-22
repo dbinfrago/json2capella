@@ -66,6 +66,6 @@ class StructAttrs(_BaseModel):
     ] = None
 
 
-CombinedModel: t.TypeAlias = dict[str, Package]
-JSONFileContents: t.TypeAlias = Package | CombinedModel
+type CombinedModel = dict[str, Package]
+type JSONFileContents = Package | CombinedModel
 JSONAdapter: p.TypeAdapter[JSONFileContents] = p.TypeAdapter(JSONFileContents)
