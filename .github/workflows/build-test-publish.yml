@@ -23,13 +23,12 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python_version:
-          - "3.10"
-          - "3.11"
           - "3.12"
           - "3.13"
+          - "3.14"
         include:
           - os: windows-latest
-            python_version: "3.10"
+            python_version: "3.12"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -42,7 +41,7 @@ jobs:
           python-version: ${{matrix.python_version}}
       - name: Run unit tests
         run: |-
-          uv run -m pytest --cov-report=term --cov=json2capella --rootdir=.
+          uv run --no-dev --group test -m pytest --cov-report=term --cov=json2capella --rootdir=.
 
   pre-commit:
     runs-on: ubuntu-latest
@@ -55,7 +54,7 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: "**/pyproject.toml"
-          python-version: "3.10"
+          python-version: "3.12"
       - name: Run Pre-Commit
         run: uv run pre-commit run --all-files
 
@@ -71,7 +70,7 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: "**/pyproject.toml"
-          python-version: "3.10"
+          python-version: "3.12"
       - name: Build packages
         run: uv build --no-sources
       - name: Verify packages
@@ -80,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: python-package-distributions
-          path: 'dist/*'
+          path: "dist/*"
   pypi:
     name: Publish to PyPI
     runs-on: ubuntu-latest

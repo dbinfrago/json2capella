@@ -27,7 +27,7 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: "**/pyproject.toml"
-          python-version: "3.10"
+          python-version: "3.12"
       - name: Auto-generate APIDOC sources
         run: uv run --no-dev --group docs sphinx-apidoc --output-dir docs/source/code --force .
       - name: Create docs
