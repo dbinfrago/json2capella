@@ -37,6 +37,10 @@ dependencies = [
 Homepage = "https://github.com/dbinfrago/json2capella"
 Documentation = "https://dbinfrago.github.io/json2capella"
 
+[project.scripts]
+json2capella = "json2capella.__main__:main"
+capella2json = "json2capella.export:main"
+
 [dependency-groups]
 test = ["coverage>=7.13.1", "pytest>=9.0.2", "pytest-cov>=7.0.0"]
 
