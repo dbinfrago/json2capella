@@ -1,0 +1,29 @@
+json2capella package
+====================
+
+Submodules
+----------
+
+json2capella.datatypes module
+-----------------------------
+
+.. automodule:: json2capella.datatypes
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+json2capella.importer module
+----------------------------
+
+.. automodule:: json2capella.importer
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: json2capella
+   :members:
+   :show-inheritance:
+   :undoc-members:
