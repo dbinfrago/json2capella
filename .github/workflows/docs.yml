@@ -19,7 +19,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           filter: tree:0
@@ -35,7 +35,7 @@ jobs:
           SPHINXOPTS: ${{ github.ref != 'refs/heads/master' && '-W' || '' }}
         run: make -C docs html
       - name: Upload built docs as artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Documentation
           path: docs/build/html
